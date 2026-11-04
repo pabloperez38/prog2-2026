@@ -7,10 +7,9 @@
          <h1 class="h2">Datos</h1>
          <div class="btn-toolbar mb-2 mb-md-0">
 
-             <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                 <span data-feather="calendar"></span>
-                 This week
-             </button>
+             <a href="agregar-dato" class="btn btn-sm btn-info">
+                 <i class="fa-solid fa-plus"></i> Agregar Dato
+             </a>
          </div>
      </div>
 
@@ -34,12 +33,18 @@
                              <?php if ($value["estado"] == 1) { ?>
                                  <span class="badge bg-success">Activo</span>
 
-                             <?php } else {  ?>
-                                 <span class="badge bg-danger">Inactivo</span>
-                             <?php }   ?>
+                                 <?php } else if ($value["estado"] == 5) {  ?>
+                                     <span class="badge bg-danger">En venta</span>
+                                 <?php } else if ($value["estado"] == 2) { ?>
+                                     <span class="badge bg-warning">Inactivo</span>
+
+                                 <?php  } else if ($value["estado"] == 3) { ?>
+                                     <span class="badge bg-info">En revisión</span>
+
+                                 <?php  }   ?>  
                          </td>
                          <td>
-                             <button class="btn btn-warning">Editar</button>
+                             <a href="index.php?ruta=editar-dato&id=<?php echo $value["id_dato"]; ?>" class="btn btn-warning">Editar</a>
                              <button class="btn btn-danger">Eliminar</button>
                          </td>
                      </tr>

@@ -32,6 +32,23 @@ MOSTRAR DATOS
 
     //Agregar datos
 
+
+    static public function mdlAgregarDatos($tabla, $datos)
+    {
+        try {
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, estado) VALUES (:nombre, :estado)");
+            // UN ENLACE DE PARAMETRO POR CADA DATO, TENER EN CUENTA EL TIPO DE DATO STR O INT
+            $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+            $stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "ok";
+            } else {
+                return "error";
+            }
+        } catch (Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
     //Editar datos
 
     //Eliminar datos
