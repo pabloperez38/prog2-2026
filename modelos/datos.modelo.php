@@ -30,9 +30,7 @@ MOSTRAR DATOS
         }
     }
 
-    //Agregar datos
-
-
+    //Agregar dato
     static public function mdlAgregarDatos($tabla, $datos)
     {
         try {
@@ -51,5 +49,37 @@ MOSTRAR DATOS
     }
     //Editar datos
 
+    static public function mdlEditarDatos($tabla, $datos)
+    {
+        try {
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, estado = :estado WHERE id_dato = :id_dato");
+
+            $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+            $stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_INT);
+            $stmt->bindParam(":id_dato", $datos["id_dato"], PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "ok";
+            } else {
+                return print_r(Conexion::conectar()->errorInfo());
+            }
+        } catch (Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
     //Eliminar datos
+
+    static public function mdlEliminarDato($tabla, $dato)
+    {
+        try {
+            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_dato = :id_dato");
+            $stmt->bindParam(":id_dato", $dato, PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "ok";
+            } else {
+                return "error";
+            }
+        } catch (Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
 }

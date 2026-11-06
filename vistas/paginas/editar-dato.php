@@ -1,4 +1,10 @@
 <?php
+if (isset($_GET["id"]) && empty($_GET["id"])) {
+    echo '<script>
+        window.location = "datos";
+    </script>';
+    exit;
+}
 $estados = EstadosControlador::ctrMostrarEstados();
 $dato = DatosControlador::ctrMostrarDatos("id_dato", $_GET["id"]);
 ?>
@@ -23,8 +29,7 @@ $dato = DatosControlador::ctrMostrarDatos("id_dato", $_GET["id"]);
                  <div class="col-md-6">
                      <label for="estado" class="form-label">Estado</label>
                      <select id="estado" name="estado" class="form-select" required>
-                         <option value="">Seleccione un estado</option>
-                         
+                                             
                             <?php foreach ($estados as $estado) { ?>
                                 <option
                                 <?php if ($dato["estado"] == $estado["id_estado"]) { ?>
@@ -36,9 +41,10 @@ $dato = DatosControlador::ctrMostrarDatos("id_dato", $_GET["id"]);
                      </select>
                  </div>
                     <?php
-                        $agregarDato = new DatosControlador();
-                        $agregarDato->ctrAgregarDatos();
+                        $editarDato = new DatosControlador();
+                        $editarDato->ctrEditarDatos();
                         ?>
+                        <input type="hidden" value="<?php echo $dato["id_dato"]; ?>"  name="id_dato">
                  <div class="col-12">
                      <button type="submit" class="btn btn-primary">Editar Dato</button>
                  </div>
