@@ -14,7 +14,7 @@
      </div>
 
      <div class="table-responsive tablaDatos">
-         <table class="table table-striped table-sm">
+         <table id="example" class="table table-striped">
              <thead>
                  <tr>
                      <th scope="col">#</th>
@@ -52,7 +52,7 @@
                         $eliminarDato->ctrEliminarDato();
                         ?>
                              <a href="index.php?ruta=editar-dato&id=<?php echo $value["id_dato"]; ?>" class="btn btn-warning">Editar</a>
-                             <button class='btn btn-danger btnEliminarCategoria' idCategoria=<?php echo $value["id_dato"]; ?>><i class='fas fa-trash-alt'></i></button>
+                             <button class='btn btn-danger btnEliminarDato' idDato=<?php echo $value["id_dato"]; ?>><i class='fas fa-trash-alt'></i></button>
                          </td>
                      </tr>
                  <?php } ?>

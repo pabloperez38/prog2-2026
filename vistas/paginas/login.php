@@ -1,6 +1,6 @@
 <?php $url = PlantillaControlador::url();?>
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
+<html lang="es" data-bs-theme="auto">
 
 <head>
     <meta charset="utf-8" />
@@ -187,23 +187,18 @@
             </li>
         </ul>
     </div>
-    <main class="form-signin w-100 m-auto">
+    <main class="form-signin w-100 m-auto text-center">
         <form method="POST">
-            <img
-                class="mb-4"
-                src="../assets/brand/bootstrap-logo.svg"
-                alt=""
-                width="72"
-                height="57" />
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+          
+            <h1 class="h3 mb-3 fw-normal">Ingreso de usuario</h1>
             <div class="form-floating">
                 <input
                     type="email"
                     class="form-control"
                     id="floatingInput"
                     name="email_usuario"
-                    placeholder="name@example.com" />
-                <label for="floatingInput">Email address</label>
+                    placeholder="name@example.com" required />
+                <label for="floatingInput">Email</label>
             </div>
             <div class="form-floating">
                 <input
@@ -211,19 +206,17 @@
                     class="form-control"
                     name="password_usuario"
                     id="floatingPassword"
-                    placeholder="Password" />
+                    placeholder="Password" required />
                 <label for="floatingPassword">Password</label>
             </div>
              <?php
-
-                        $login = new UsuariosControllador();
-                        $login->login();
-
-                        ?>
+                $login = new UsuariosControllador();
+                $login->login();
+                ?>
             <button class="btn btn-primary w-100 py-2" type="submit">
               Ingresar
             </button>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2025</p>
+            <p class="mt-5 mb-3 text-body-secondary">&copy; <?php echo date("Y"); ?>  - Pablo Pérez</p>
         </form>
     </main>
     <script

@@ -1,14 +1,11 @@
 <?php
-
 class UsuariosControllador
 {
     /*=============================================
 	MOSTRAR USUARIOS
 	=============================================*/
-
     static public function ctrMostrarUsuarios($item, $valor)
     {
-
         $respuesta = UsuariosModelo::mdlMostrarUsuarios($item, $valor);
 
         return $respuesta;
@@ -17,16 +14,10 @@ class UsuariosControllador
     /*=============================================
 	Login de usuarios
 	=============================================*/
-
     
 public function login()
 {
-    if (isset($_POST["email_usuario"]) && isset($_POST["password_usuario"])) {
-
-        echo '<script>
-            fncSweetAlert("loading", "Ingresando...", "");
-        </script>';
-
+    if (isset($_POST["email_usuario"]) && isset($_POST["password_usuario"])) {      
         $email = trim($_POST["email_usuario"]);
         $password = trim($_POST["password_usuario"]);
 
@@ -43,7 +34,10 @@ public function login()
             $respuesta["email"] === $email &&
             password_verify($password, $respuesta["password"])
         ) {
-
+          echo '<script>
+            fncSweetAlert("loading", "Ingresando...", "");
+        </script>';
+        
             // Regenerar ID de sesión por seguridad
             session_regenerate_id(true);
 

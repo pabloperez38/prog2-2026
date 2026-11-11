@@ -85,7 +85,7 @@ EDITAR DATOS
             if ($respuesta == "ok") {
 
                         echo '<script>
-        fncSweetAlert("success", "El dato se eliminó correctamente", "' . $url . '");
+                     fncSweetAlert("success", "El dato se eliminó correctamente", "' . $url . '");
         </script>';
             }
         }

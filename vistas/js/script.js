@@ -86,12 +86,12 @@ ELIMINAR DATO
 =============================================*/
 $(document).ready(function () {
 
-    $(".tablaDatos").on("click", ".btnEliminarCategoria", function () {
+    $(".tablaDatos").on("click", ".btnEliminarDato", function () {
 
-        let idDatoEliminar = $(this).attr("idCategoria");
+        let idDatoEliminar = $(this).attr("idDato");      
 
         Swal.fire({
-            title: "¿Está seguro de eliminar este dato?",
+           
             text: "¡Si no está seguro puede cancelar la acción!",
             icon: "warning",
             showCancelButton: true,
@@ -112,5 +112,23 @@ $(document).ready(function () {
         });
 
     });
+
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const tabla = document.querySelector('#example');
+
+    if (tabla) {
+        new DataTable('#example', {
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-AR.json'
+            },
+            pageLength: 10,
+            lengthMenu: [5, 10, 25, 50],
+            ordering: true,
+            searching: true
+        });
+    }
 
 });

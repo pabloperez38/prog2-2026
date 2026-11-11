@@ -11,7 +11,6 @@ class UsuariosModelo
 
     static public function mdlMostrarUsuarios($item, $valor)
     {
-
         if ($item != null) {
 
             try {
