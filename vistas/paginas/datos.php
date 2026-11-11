@@ -6,8 +6,6 @@
      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
          <h1 class="h2">Datos</h1>
          <div class="btn-toolbar mb-2 mb-md-0">
-<?php echo crypt("12345678", '$6$rounds=1000000$NJy4rIPjpOaU$0ACEYGg/aKCY3v8O8AfyiO7CTfZQ8/pabloperezholaquetalcomoestas/'); ?>
-<br>
 
              <a href="agregar-dato" class="btn btn-sm btn-info">
                  <i class="fa-solid fa-plus"></i> Agregar Dato
@@ -15,7 +13,7 @@
          </div>
      </div>
 
-     <div class="table-responsive">
+     <div class="table-responsive tablaDatos">
          <table class="table table-striped table-sm">
              <thead>
                  <tr>
@@ -62,3 +60,9 @@
          </table>
      </div>
  </main>
+ <?php
+
+$eliminarDato = new DatosControlador();
+$eliminarDato->ctrEliminarDato();
+
+?>

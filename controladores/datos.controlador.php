@@ -76,13 +76,12 @@ EDITAR DATOS
     }
 
     static public function ctrEliminarDato(){
-        if (isset($_GET["eliminar"]) && ($_GET["eliminar"] != "")) {
-
+        if (isset($_GET["idDatoEliminar"]) && ($_GET["idDatoEliminar"] != "")) {
 
             $tabla = "datos";
-            $dato = $_GET["dato"];
+            $id_dato = $_GET["idDatoEliminar"];
             $url = PlantillaControlador::url() . "datos";
-            $respuesta = DatosModelo::mdlEliminarDato($tabla, $dato);
+            $respuesta = DatosModelo::mdlEliminarDato($tabla, $id_dato);
             if ($respuesta == "ok") {
 
                         echo '<script>

@@ -81,3 +81,36 @@ Cuando necesitamos cerrar la alerta suave
       break;
   }
 }
+/*=============================================
+ELIMINAR DATO
+=============================================*/
+$(document).ready(function () {
+
+    $(".tablaDatos").on("click", ".btnEliminarCategoria", function () {
+
+        let idDatoEliminar = $(this).attr("idCategoria");
+
+        Swal.fire({
+            title: "¿Está seguro de eliminar este dato?",
+            text: "¡Si no está seguro puede cancelar la acción!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "Cancelar",
+            confirmButtonText: "Sí, eliminar dato"
+
+        }).then(function (result) {
+
+            if (result.isConfirmed) {
+
+                window.location =
+                    "index.php?ruta=datos&idDatoEliminar=" + idDatoEliminar;
+
+            }
+
+        });
+
+    });
+
+});

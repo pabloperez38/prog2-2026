@@ -1,4 +1,14 @@
-<?php $url = PlantillaControlador::url(); ?>
+<?php
+ob_start(); // Inicia el buffer de salida
+session_start();
+$url = PlantillaControlador::url(); 
+if (!isset($_SESSION["iniciarSesion"])) {
+
+        include "vistas/paginas/login.php";
+
+    } else {
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -27,15 +37,16 @@
             }
         }
     </style>
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script src="<?php echo $url; ?>vistas/js/script.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="<?php echo $url; ?>vistas/js/script.js"></script>
     <!-- Custom styles for this template -->
     <link href="<?php echo $url; ?>vistas/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <?php include "vistas/paginas/header.php"; ?>
+
+ <?php include "vistas/paginas/header.php"; ?>
 
     <div class="container-fluid">
         <div class="row">
@@ -55,7 +66,6 @@
                             </a>
                         </li>
 
-
                     </ul>
 
                 </div>
@@ -66,14 +76,17 @@
                 $pagina = $_GET["ruta"];
                 if (
                     $pagina == "inicio"
-                    ||  $pagina == "datos"
+                    || $pagina == "datos"
                     || $pagina == "clientes"
                     || $pagina == "categorias"
                     || $pagina == "agregar-dato"
                     || $pagina == "editar-dato"
+                    || $pagina == "salir"
 
                 ) {
                     include "vistas/paginas/" . $pagina . ".php";
+                } elseif ($pagina == "login") {
+                    include "vistas/modulos/inicio.php";
                 } else {
                     include "vistas/paginas/error404.php";
                 }
@@ -86,8 +99,10 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+
     <script src="dashboard.js"></script>
+   
 </body>
 
 </html>
+ <?php } ?>
